@@ -13,7 +13,7 @@ public class ShootJump : MonoBehaviour
     GameObject boolet;
 
     [SerializeField]
-    GameObject player;
+    GameObject vrCamera;
 
     GameObject freshBullet;
 
@@ -31,19 +31,21 @@ public class ShootJump : MonoBehaviour
     {
         if (m_BooleanAction.GetStateDown(SteamVR_Input_Sources.Any))
         {
-            SpawnBullet(boolet, player);
+            SpawnBullet(boolet, vrCamera);
         }
         //for debug stuff
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnBullet(boolet, player);
+            SpawnBullet(boolet, vrCamera);
         }
+
+        GetComponent<CapsuleCollider>().center = new Vector3(vrCamera.transform.position.x, 1, vrCamera.transform.position.z);
     }
 
     public void SpawnBullet(GameObject boolet, GameObject player)
     {
         freshBullet = Instantiate(boolet, player.transform.position - new Vector3(0, 0.5f, 0), Quaternion.identity);
-        player.GetComponent<Rigidbody>().velocity = new Vector3 (0, 1, 0);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 5, 0);
         freshBullet.GetComponent<Rigidbody>().velocity = new Vector3 (0, -25, 0);
     }
 }
