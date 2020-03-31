@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vibein.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "H:\\GitHub\\DownwellVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\student\\Documents\\GitHub\\DownwellVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Vibein [Testing]"
