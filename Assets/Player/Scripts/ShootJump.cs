@@ -44,8 +44,8 @@ public class ShootJump : MonoBehaviour
 
     public void SpawnBullet(GameObject boolet, GameObject player)
     {
-        freshBullet = Instantiate(boolet, player.transform.position - new Vector3(0, 1f, 0), Quaternion.identity);
-        gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 5, 0);
+        freshBullet = Instantiate(boolet, player.transform.position - new Vector3(0, 1.5f, 0), Quaternion.identity);
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 1, 0);
         freshBullet.GetComponent<Rigidbody>().velocity = new Vector3 (0, -25, 0);
     }
 }
