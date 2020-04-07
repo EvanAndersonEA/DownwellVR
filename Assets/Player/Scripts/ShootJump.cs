@@ -10,10 +10,10 @@ public class ShootJump : MonoBehaviour
     public SteamVR_Action_Boolean m_BooleanAction;
 
     [SerializeField]
-    GameObject boolet;
+    public GameObject boolet = null;
 
     [SerializeField]
-    GameObject vrCamera;
+    public GameObject vrCamera = null;
 
     GameObject freshBullet;
 

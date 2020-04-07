@@ -8,6 +8,7 @@ TagManager:
   - Breakable Floor
   - Danger_Collider
   - Bouncing_Collider
+  - Player_Collider
   layers:
   - Default
   - TransparentFX

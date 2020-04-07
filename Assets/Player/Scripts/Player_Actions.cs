@@ -7,10 +7,8 @@ public class Player_Actions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
         if (collision.gameObject.tag == "Danger_Collider")
         {
-            Debug.Log("DANGER");
             player_Lifes--;
             Destroy(collision.gameObject);
         }
@@ -18,7 +16,7 @@ public class Player_Actions : MonoBehaviour
         if (collision.gameObject.tag == "Bouncing_Collider")
         {
             gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * impulse);
-            Destroy(collision.gameObject);
+            Destroy(collision.transform.parent.gameObject);
         }
     }
 }
