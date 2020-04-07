@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Breakable Floor
+  - Danger_Collider
+  - Bouncing_Collider
   layers:
   - Default
   - TransparentFX
