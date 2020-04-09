@@ -5,6 +5,10 @@ using Valve.VR;
 
 public class ShootJump : MonoBehaviour
 {
+    public CapsuleCollider collider;
+    /// <summary>
+    /// 
+    /// </summary>
     public SteamVR_ActionSet m_ActionSet;
 
     public SteamVR_Action_Boolean m_BooleanAction;
@@ -39,7 +43,8 @@ public class ShootJump : MonoBehaviour
             SpawnBullet(boolet, vrCamera);
         }
 
-        GetComponent<CapsuleCollider>().center = new Vector3(vrCamera.transform.position.x, 1, vrCamera.transform.position.z);
+        //GetComponent<CapsuleCollider>().center = new Vector3(vrCamera.transform.position.x, 1, vrCamera.transform.position.z);
+        collider.center = new Vector3(vrCamera.transform.position.x, 1, vrCamera.transform.position.z);
     }
 
     public void SpawnBullet(GameObject boolet, GameObject player)
