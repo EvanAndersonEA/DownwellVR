@@ -5,7 +5,7 @@ using Valve.VR;
 
 public class Player_Actions : MonoBehaviour
 {
-    [SerializeField] private SteamVR_ActionSet m_ActionSet;
+    [SerializeField] private SteamVR_ActionSet m_ActionSet = null;
     [SerializeField] private SteamVR_Action_Boolean m_BooleanAction;
     [SerializeField] private GameObject bullet = null;
     [SerializeField] private GameObject vrCamera = null;
