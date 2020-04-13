@@ -11,19 +11,32 @@ public class Player_Actions : MonoBehaviour
     [SerializeField] private GameObject vrCamera = null;
     [SerializeField] private Rigidbody body = null;
     [HideInInspector] public int player_Lifes = 3;
+    private AudioSource shotSound = null;
+    private int amountOfBullets = 8;
 
     private void Awake()
     {
         m_BooleanAction = SteamVR_Actions.default_GrabPinch;
         m_ActionSet.Activate(SteamVR_Input_Sources.Any, 0, true);
+
+        // Getting the shot gun sound:
+        shotSound = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         #region Shooting:
         if (m_BooleanAction.GetStateDown(SteamVR_Input_Sources.Any))
-            SpawnBullet(bullet, vrCamera);       
-
+        {
+            // Checking if the player can keep shooting:
+            if (amountOfBullets > 0)
+            {
+                SpawnBullet(bullet, vrCamera);
+                shotSound.Play();
+                amountOfBullets--;
+            }
+        }
+            
         gameObject.GetComponent<CapsuleCollider>().center = new Vector3(vrCamera.transform.position.x, 1, vrCamera.transform.position.z);
         #endregion
 
@@ -40,15 +53,31 @@ public class Player_Actions : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// - Reset amount of bullets:
+    ///     Some colliders can reset the amount of bullets in game.
+    /// - Collide with enemy:
+    ///     Depending on the collider the player loses a life or kills 
+    ///     the enemy by bouncing on it.
+    /// </summary>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Danger_Collider")
+        string tag = other.gameObject.tag;
+
+        //Reset amount of bullets:
+        if (tag == "Breakable Floor" || tag == "Bouncing_Collider" || tag == "Floor")
+        {
+            amountOfBullets = 8;
+        }
+
+        // Collide with enemies:
+        if (tag == "Danger_Collider")
         {
             player_Lifes--;
             Destroy(other.transform.parent.gameObject);
         }
 
-        if (other.gameObject.tag == "Bouncing_Collider")
+        if (tag == "Bouncing_Collider")
         {
             body.AddRelativeForce(Vector3.up * 500.0f);
             Destroy(other.transform.parent.gameObject);
