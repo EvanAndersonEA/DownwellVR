@@ -24,7 +24,7 @@ public class Start_Game : MonoBehaviour
             if (m_BooleanAction.GetStateDown(SteamVR_Input_Sources.Any))
             {
                 StartGame();
-                hasTheGameStarted = false;
+                hasTheGameStarted = true;
 
             }
         }
