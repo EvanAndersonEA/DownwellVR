@@ -10,6 +10,7 @@ public class Player_Actions : MonoBehaviour
     [SerializeField] private GameObject vrCamera = null;
     [SerializeField] private Rigidbody body = null;
     [HideInInspector] public int player_Lifes = 3;
+    [SerializeField] private Lives_Score_Handler score_Handler = null;
     private AudioSource shotSound = null;
     private int amountOfBullets = 8;
 
@@ -82,6 +83,7 @@ public class Player_Actions : MonoBehaviour
 
         if (tag == "Bouncing_Collider")
         {
+            score_Handler.score += 1500;
             body.AddRelativeForce(Vector3.up * 500.0f);
             Destroy(other.transform.parent.gameObject);
         }
