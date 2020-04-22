@@ -4,7 +4,7 @@ using Valve.VR;
 public class Enemy_Behaviour : MonoBehaviour
 {
     private GameObject player;
-    private float distanceToTriggerFollow = 10.0f;
+    private float distanceToTriggerFollow = 4.0f;
     private float speedOfFollowing = 1.0f;
 
     private void Awake()
