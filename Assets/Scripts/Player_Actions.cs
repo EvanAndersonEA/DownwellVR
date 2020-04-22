@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class Player_Actions : MonoBehaviour
 {
@@ -75,6 +74,10 @@ public class Player_Actions : MonoBehaviour
         {
             player_Lifes--;
             Destroy(other.transform.parent.gameObject);
+            if (player_Lifes == 0)
+            {
+                SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+            }
         }
 
         if (tag == "Bouncing_Collider")
